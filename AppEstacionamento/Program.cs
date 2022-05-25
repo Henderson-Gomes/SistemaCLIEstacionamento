@@ -16,7 +16,7 @@ DesingMenu();
 
  void DesingMenu()
 {
-    int resp = 0;
+    int resp;
     do
     {
 
@@ -27,7 +27,7 @@ DesingMenu();
         Console.WriteLine("[3] Marcar Saida");
         Console.WriteLine("[4] Sair ");
         Console.WriteLine("+------------------------------------------+");
-        resp = Convert.ToInt32(Console.ReadLine()); 
+        resp = int.Parse(Console.ReadLine()); 
 
         switch (resp)
         {
@@ -44,7 +44,7 @@ DesingMenu();
                 break;
             case 3:
                 Console.WriteLine("ID do cliente: ");
-                int id = Convert.ToInt32(Console.Read());
+                int id = int.Parse(Console.ReadLine());
                 cliente.MarcarSaida(id);
                 DesingMenu(); 
                 break;

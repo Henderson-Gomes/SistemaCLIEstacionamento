@@ -16,7 +16,7 @@ namespace AppEstacionamento.Entities
         public Carro carro { get; set; }
               
         public DateTime Entrada { get; set; }
-        public DateTime Saida { get; set; }
+        public DateTime? Saida { get; set; } = null;
         public static List<Cliente> ListaCarros { get; set; } = new List<Cliente> ();
     
 
@@ -64,9 +64,17 @@ namespace AppEstacionamento.Entities
         
         public override string ToString()
         {
-            Console.WriteLine("");
-            Console.WriteLine($"CLINTE: [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: {Saida}] ");
-            return $"CARRO: [Modelo: {carro.Modelo}] [Marca: {carro.Marca}] [Placa: {carro.Placa}]";
+            string cli;
+            if (Saida == null)
+            {
+                cli= $"CLINTE: [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: Saida não marcada] | CARRO: [Modelo: {carro.Modelo}] [Marca: {carro.Marca}] [Placa: {carro.Placa}]";
+            }
+            else
+            {
+                cli= $"CLINTE: [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: {Saida}] | CARRO: [Modelo: {carro.Modelo}] [Marca: {carro.Marca}] [Placa: {carro.Placa}]";
+
+            }
+            return cli;
             
         }
     }
