@@ -2,9 +2,13 @@
 
 
 int id = 0;
-Cliente cliente = new Cliente("Henderson", "442.063.338-74", "HB20", "Honda", "HEZ76", DateTime.Now,id++);
+Carro carro = new Carro("HB20", "Honda", "HEZ76");
+Cliente cliente = new Cliente("Henderson", "442.063.338-74", DateTime.Now,id++,carro);
+
 cliente.MarcarEntrada(cliente);
-cliente = new Cliente("Gizelli", "442.872.112-74", "RC22", "GIP", "YUN23", DateTime.Now,id++);
+carro = new Carro("RC22", "GIP", "YUN23");
+cliente = new Cliente("Gizelli", "442.872.112-74", DateTime.Now,id++,carro);
+
 cliente.MarcarEntrada(cliente);
 
 DesingMenu();
@@ -33,7 +37,8 @@ DesingMenu();
 
                 break;
             case 2:
-                cliente = new Cliente("Hathos", "332.322.999-32", "YAMAHA", "YINLDAI", "VS288", DateTime.Now, 3);
+                carro = new Carro("YAMAHA", "YINLDAI", "VS288");
+                cliente = new Cliente("Hathos", "332.322.999-32", DateTime.Now, 3,carro);
                 cliente.MarcarEntrada(cliente);
 
                 break;

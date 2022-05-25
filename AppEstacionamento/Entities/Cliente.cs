@@ -13,10 +13,8 @@ namespace AppEstacionamento.Entities
         public string Nome { get; set; }
         public string CPF { get; set; }
         
-        
-        public string Modelo { get; set; }
-        public string Marca { get; set; }
-        public string Placa { get; set; }
+        public Carro carro { get; set; }
+              
         public DateTime Entrada { get; set; }
         public DateTime Saida { get; set; }
         public static List<Cliente> ListaCarros { get; set; } = new List<Cliente> ();
@@ -24,17 +22,13 @@ namespace AppEstacionamento.Entities
 
         
 
-        public Cliente(string nome, string cPF, string modelo, string marca, string placa, DateTime entrada,int id)
+        public Cliente(string nome, string cPF,DateTime entrada,int id, Carro c)
         {
             Nome = nome;
             CPF = cPF;
-            Modelo = modelo;
-            Marca = marca;
-            Placa = placa;
+            carro = c;
             Entrada = entrada;
-            Id = id;
-
-            
+            Id = id;           
         }
 
         public void MarcarEntrada(Cliente c)
@@ -70,7 +64,10 @@ namespace AppEstacionamento.Entities
         
         public override string ToString()
         {
-            return $"[Nome: {Nome}] [CPF: {CPF}] [Modelo: {Modelo}] [Marca: {Marca}] [Placa: {Placa}] [Entrada: {Entrada}] [Saida: {Saida}]";
+            Console.WriteLine("");
+            Console.WriteLine($"CLINTE: [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: {Saida}] ");
+            return $"CARRO: [Modelo: {carro.Modelo}] [Marca: {carro.Marca}] [Placa: {carro.Placa}]";
+            
         }
     }
 }
