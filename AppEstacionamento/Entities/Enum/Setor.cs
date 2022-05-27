@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AppEstacionamento.Entities.Enum
 {
-    internal class Setor
+    enum Setor
     {
+        Manobrista,
+        Atendente
     }
 }

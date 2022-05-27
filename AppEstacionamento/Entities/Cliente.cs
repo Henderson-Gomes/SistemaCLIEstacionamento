@@ -18,22 +18,18 @@ namespace AppEstacionamento.Entities
         public DateTime Entrada { get; set; }
         public DateTime? Saida { get; set; } = null;
         public static List<Cliente> ListaCarros { get; set; } = new List<Cliente> ();
-    
-
-        
-
         public Cliente(string nome, string cPF,DateTime entrada, Veiculo c)
         {
             Nome = nome;
             CPF = cPF;
             carro = c;
             Entrada = entrada;
-            
         }
 
         public void MarcarEntrada(Cliente c)
         {
             ListaCarros.Add(c);
+            Vagas.OcuparVaga(c);
             Id++;
         }
         public void MarcarSaida(int id) 
@@ -47,10 +43,7 @@ namespace AppEstacionamento.Entities
                     c.Saida = d;
                  
                 }
-            }
-            {
-
-            }
+            }         
         }
         public void Listar()
         {

@@ -4,14 +4,22 @@ using AppEstacionamento.Entities.Enum;
 int id = 0;
 
 
+Funcionario f = new Funcionario(2, "Jorge", "333.333.333-22", Setor.Manobrista);
+f.CadastrarFuncionario(f);
+f = new Funcionario(1, "Eduardo", "111.111.111-33", Setor.Atendente);
+f.CadastrarFuncionario(f);
+
+f.ListarFuncionarios();
+
 Veiculo carro = new Veiculo("HB20", "Honda", "HEZ76", TipoVeiculo.Carro);
-Cliente cliente = new Cliente("Henderson", "442.063.338-74", DateTime.Now,carro);
+Cliente cliente = new Cliente("Henderson", "442.000.119-74", DateTime.Now,carro);
 
 cliente.MarcarEntrada(cliente);
 carro = new Veiculo("RC22", "GIP", "YUN23", TipoVeiculo.Carro);
-cliente = new Cliente("Gizelli", "442.872.112-74", DateTime.Now,carro);
+cliente = new Cliente("Gizelli", "877.872.112-74", DateTime.Now,carro);
 
 cliente.MarcarEntrada(cliente);
+
 
 DesingMenu();
 
