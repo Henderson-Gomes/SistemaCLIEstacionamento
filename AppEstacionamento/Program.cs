@@ -1,13 +1,15 @@
 ﻿using AppEstacionamento.Entities;
-
+using AppEstacionamento.Entities.Enum;
 
 int id = 0;
-Carro carro = new Carro("HB20", "Honda", "HEZ76");
-Cliente cliente = new Cliente("Henderson", "442.063.338-74", DateTime.Now,id++,carro);
+
+
+Veiculo carro = new Veiculo("HB20", "Honda", "HEZ76", TipoVeiculo.Carro);
+Cliente cliente = new Cliente("Henderson", "442.063.338-74", DateTime.Now,carro);
 
 cliente.MarcarEntrada(cliente);
-carro = new Carro("RC22", "GIP", "YUN23");
-cliente = new Cliente("Gizelli", "442.872.112-74", DateTime.Now,id++,carro);
+carro = new Veiculo("RC22", "GIP", "YUN23", TipoVeiculo.Carro);
+cliente = new Cliente("Gizelli", "442.872.112-74", DateTime.Now,carro);
 
 cliente.MarcarEntrada(cliente);
 
@@ -37,8 +39,8 @@ DesingMenu();
 
                 break;
             case 2:
-                carro = new Carro("YAMAHA", "YINLDAI", "VS288");
-                cliente = new Cliente("Hathos", "332.322.999-32", DateTime.Now, 3,carro);
+                carro = new Veiculo("YAMAHA", "YINLDAI", "VS288",TipoVeiculo.Moto);
+                cliente = new Cliente("Hathos", "332.322.999-32", DateTime.Now,carro);
                 cliente.MarcarEntrada(cliente);
 
                 break;
