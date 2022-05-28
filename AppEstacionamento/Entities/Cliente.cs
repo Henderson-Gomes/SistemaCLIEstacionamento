@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ClosedXML.Excel;
 
 namespace AppEstacionamento.Entities
 {
@@ -13,7 +13,7 @@ namespace AppEstacionamento.Entities
         public string Nome { get; set; }
         public string CPF { get; set; }
         
-        public Veiculo carro { get; set; }
+        public Veiculo veiculo { get; set; }
               
         public DateTime Entrada { get; set; }
         public DateTime? Saida { get; set; } = null;
@@ -22,10 +22,22 @@ namespace AppEstacionamento.Entities
         {
             Nome = nome;
             CPF = cPF;
-            carro = c;
+            veiculo = c;
             Entrada = entrada;
         }
+        public void Cadastrar(Cliente c)
+        {
+            using (var Workbook = new XLWorkbook())
+            {
+                var Worksheet = Workbook.Worksheets.Add("Clientes");
+                Worksheet.Cell("A2").Value = c.Id;
+                Worksheet.Cell("B2").Value = c.Nome;
+                Worksheet.Cell("C2").Value = c.CPF;
 
+                Workbook.SaveAs(@"C:\Users\hende\OneDrive\Documentos\Sistema de Gerenciamento PETSHOP\AppEstacionamento\AppEstacionamento\Dados\Dados.xlsx");
+
+            }
+        }
         public void MarcarEntrada(Cliente c)
         {
             ListaCarros.Add(c);
@@ -62,11 +74,11 @@ namespace AppEstacionamento.Entities
             string cli;
             if (Saida == null)
             {
-                cli= $"CLINTE: [ID: {Id}] [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: Saida não marcada] | CARRO: [Modelo: {carro.Modelo}] [Marca: {carro.Marca}] [Placa: {carro.Placa}] [{carro.tipoveiculo}] [Valor: {carro.ValorPorHora.ToString("F2")}]";
+                cli= $"CLINTE: [ID: {Id}] [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: Saida não marcada] | CARRO: [Modelo: {veiculo.Modelo}] [Marca: {veiculo.Marca}] [Placa: {veiculo.Placa}] [{veiculo.tipoveiculo}] [Valor: {veiculo.ValorPorHora.ToString("F2")}]";
             }
             else
             {
-                cli= $"CLINTE: [ID: {Id}] [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: {Saida}] | CARRO: [Modelo: {carro.Modelo}] [Marca: {carro.Marca}] [Placa: {carro.Placa}]";
+                cli= $"CLINTE: [ID: {Id}] [Nome: {Nome}] [CPF: {CPF}] [Entrada: {Entrada}] [Saida: {Saida}] | CARRO: [Modelo: {veiculo.Modelo}] [Marca: {veiculo.Marca}] [Placa: {veiculo.Placa}]";
 
             }
             return cli;

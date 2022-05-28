@@ -7,39 +7,73 @@ namespace AppEstacionamento.Entities;
 
 internal abstract class Vagas
 {
+    public string Nome { get; set; }
+    public string CPf { get; set; }
+    public int NumeroVaga { get; set; }
+
+    public static Vagas[] VagaMotO = new Vagas[10];
     public static Cliente[] VagaCarro = new Cliente[20];
     public static Cliente[] VagaMoto = new Cliente[10];
 
     public static void OcuparVaga(Cliente c)
     {
-        if(c.carro.tipoveiculo == Enum.TipoVeiculo.Carro)
+       
+        if (c.veiculo.tipoveiculo == Enum.TipoVeiculo.Carro)
         {
-            for (int i=0; i < VagaCarro.Length; i++)
+            for (int i = 0; i <= VagaCarro.Length; i++)
             {
-                if(VagaCarro[i] != null)
+                if (VagaCarro[i] == null)
                 {
                     VagaCarro[i] = c;
+                    break;
                 }
-               
+
             }
         }
-        else
+        else if (c.veiculo.tipoveiculo == Enum.TipoVeiculo.Moto)
         {
-            for (int i = 0; i < VagaMoto.Length; i++)
+            for (int i = 0; i <= VagaMoto.Length; i++)
             {
-                if (VagaMoto[i] != null)
+                if (VagaMoto[i] == null)
                 {
-                    VagaCarro[i] = c;
+                    VagaMoto[i] = c;
+                    break;
                 }
             }
         }
+       
     }
     public static void ListarVaga()
     {
-        foreach(Cliente CliCarro in VagaCarro)
+         Console.WriteLine("Vagas de Carros");
+ 
+        foreach (Cliente CliCarro in VagaCarro)
         {
-            Console.WriteLine("Vaga Carros");
-            Console.WriteLine(CliCarro);
+            if (CliCarro!= null)
+            {
+                Console.WriteLine($"[ID: {CliCarro.Id}] [Nome: {CliCarro.Nome}] [Placa: {CliCarro.veiculo.Placa}]");
+            }
+            else
+            {
+                Console.WriteLine("Vaga vazia");
+            }
+
+            
+        }
+        
+        Console.WriteLine("Vagas de Moto");
+        
+        foreach (Cliente CliMoto in VagaMoto)
+        {
+            if (CliMoto != null)
+            {
+                Console.WriteLine($"[ID: {CliMoto.Id}] [Nome: {CliMoto.Nome}] [Placa: {CliMoto.veiculo.Placa}]");
+            }
+            else
+            {
+                Console.WriteLine("Vaga vazia");
+            }
+            
         }
     }
 
