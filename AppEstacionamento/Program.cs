@@ -19,8 +19,7 @@ cliente = new Cliente("Gizelli", "877.872.112-74", DateTime.Now,carro);
 cliente.MarcarEntrada(cliente);
 Vagas.ListarVaga();
 
-Planilha p = new Planilha() ;
-p.ExcutarPlanilha();
+
 
 DesingMenu();
 
@@ -36,8 +35,9 @@ DesingMenu();
         Console.WriteLine("[1] Lista dos Carros");
         Console.WriteLine("[2] Marcar Entrada");
         Console.WriteLine("[3] Marcar Saida");
-        Console.WriteLine("[4] Listar Vagas");
-        Console.WriteLine("[5] Sair ");
+        Console.WriteLine("[4] Listar funcionario");
+        Console.WriteLine("[5] Listar Vagas");
+        Console.WriteLine("[6] Sair ");
         Console.WriteLine("+------------------------------------------+");
         resp = int.Parse(Console.ReadLine()); 
 
@@ -66,6 +66,11 @@ DesingMenu();
                 DesingMenu(); 
                 break;
             case 4:
+                Console.Clear();
+                f.ListarFuncionarios();
+                DesingMenu();
+                break;
+            case 5:
                 Console.Clear();
                 Vagas.ListarVaga();
                 DesingMenu();

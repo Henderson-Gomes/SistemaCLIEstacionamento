@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,19 +26,7 @@ namespace AppEstacionamento.Entities
             veiculo = c;
             Entrada = entrada;
         }
-        public void Cadastrar(Cliente c)
-        {
-            using (var Workbook = new XLWorkbook())
-            {
-                var Worksheet = Workbook.Worksheets.Add("Clientes");
-                Worksheet.Cell("A2").Value = c.Id;
-                Worksheet.Cell("B2").Value = c.Nome;
-                Worksheet.Cell("C2").Value = c.CPF;
-
-                Workbook.SaveAs(@"C:\Users\hende\OneDrive\Documentos\Sistema de Gerenciamento PETSHOP\AppEstacionamento\AppEstacionamento\Dados\Dados.xlsx");
-
-            }
-        }
+        
         public void MarcarEntrada(Cliente c)
         {
             ListaCarros.Add(c);
