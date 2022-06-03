@@ -1,6 +1,15 @@
 ﻿using AppEstacionamento.Entities;
 using AppEstacionamento.Entities.Enum;
 
+try
+{
+    Conexao con = new Conexao();
+}
+catch
+{
+    Console.WriteLine("deu ruim");
+}
+
 int id = 0;
 Funcionario f = new Funcionario(2, "Jorge", "333.333.333-22", Setor.Manobrista);
 f.CadastrarFuncionario(f);
@@ -17,7 +26,7 @@ carro = new Veiculo("RC22", "GIP", "YUN23", TipoVeiculo.Carro);
 cliente = new Cliente("Gizelli", "877.872.112-74", DateTime.Now,carro);
 
 cliente.MarcarEntrada(cliente);
-Vagas.ListarVaga();
+
 
 
 
@@ -77,7 +86,7 @@ DesingMenu();
                 break;
                 
         }
-    } while (resp != 5);
+    } while (resp != 6);
     
     
 }

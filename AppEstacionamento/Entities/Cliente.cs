@@ -18,7 +18,17 @@ namespace AppEstacionamento.Entities
               
         public DateTime Entrada { get; set; }
         public DateTime? Saida { get; set; } = null;
-        public static List<Cliente> ListaCarros { get; set; } = new List<Cliente> ();
+        public static List<Cliente> ListaCliente { get; set; } = new List<Cliente> ();
+
+        public Cliente(int id, string nome, string cPF, Veiculo veiculo)        {
+            Id = id;
+            Nome = nome;
+            CPF = cPF;
+            this.veiculo = veiculo;
+            
+        }
+
+
         public Cliente(string nome, string cPF,DateTime entrada, Veiculo c)
         {
             Nome = nome;
@@ -26,10 +36,13 @@ namespace AppEstacionamento.Entities
             veiculo = c;
             Entrada = entrada;
         }
-        
+        public void CadastrarCliente(Cliente c)
+        {
+            ListaCliente.Add(c);
+        }
         public void MarcarEntrada(Cliente c)
         {
-            ListaCarros.Add(c);
+            ListaCliente.Add(c);
             Vagas.OcuparVaga(c);
             Id++;
         }
@@ -37,7 +50,7 @@ namespace AppEstacionamento.Entities
         {
             DateTime d = new DateTime();
             d = DateTime.Now;
-            foreach (Cliente c in ListaCarros)
+            foreach (Cliente c in ListaCliente)
             {
                 if (c.Id == id)
                 {
@@ -50,7 +63,7 @@ namespace AppEstacionamento.Entities
         {
             Console.WriteLine();
             Console.WriteLine("                         LISTA DE CLIENTES                             ");
-            foreach(Cliente c in ListaCarros)
+            foreach(Cliente c in ListaCliente)
             {
                 
                 Console.WriteLine(c);
